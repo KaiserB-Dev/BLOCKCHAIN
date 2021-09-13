@@ -1,3 +1,5 @@
+//Isaac Mejía F.
+
 #include"blockchain.hpp"
 
 Blockchain::Blockchain(){

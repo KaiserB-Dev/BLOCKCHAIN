@@ -1,3 +1,5 @@
+//Isaac Mejía F.
+
 #ifndef BLOCKCHAIN_HPP
 #define BLOCKCHAIN_HPP
 #include "block.hpp"
