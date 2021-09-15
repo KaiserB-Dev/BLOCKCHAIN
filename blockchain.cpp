@@ -19,6 +19,7 @@ block Blockchain::newGenesis(){
 std::ostream& operator<<(std::ostream& os, Blockchain b){
     os<<"{ \n";
     for(size_t i=0; i<b.blockchain.size();++i){
+        os<<"BLOQUE NUMERO: "<<i<<std::endl;
         os<<b.blockchain[i]<<",\n\n";
     }
 
