@@ -9,20 +9,22 @@ block::block(const std::string data, std::string prevHash){
     this->data = data;
     this->prevHash = prevHash;
     this->timestamp = timestamp;
+    this -> ID_BLOCK = genIDBlock(this->data, this->prevHash, this->timestamp);
     
 
-    this->hash = mineValidHash(this->data, this->prevHash, this->timestamp);
+    this->ValidHash = mineValidHash(this->ID_BLOCK);
 }
 
 std::string block::getHash(){
-    return this->hash;
+    return this->ValidHash;
 }
 
 
 std::ostream& operator<<(std::ostream& os, block b){
-    os<< "[ data: "<<b.data<<std::endl;
+    os<< "[data: "<<b.data<<std::endl;
+    os<< " MAKER_ROOT: "<<b.ID_BLOCK<<std::endl;
     os<< " prevhash: "<<b.prevHash<<std::endl;
-    os<< " hash: "<<b.hash<<" ]";
+    os<< " hash: "<<b.ValidHash<<"]";
 
     return os;
 }
@@ -36,22 +38,20 @@ bool isValidHash(std::string hash){
     return isValid;
 }
 
-std::string mineValidHash(const std::string data, std::string prevHash, int timestamp){
+std::string mineValidHash(std::string ID_BLOCK){
     int magicValue = 0;
-    std::string headers = "";
     std::string hash;
-    headers += data;
-    headers += prevHash;
-    headers += timestamp;
+    ID_BLOCK.pop_back();
+    
 
     while(true){
-        headers.push_back(magicValue);
-        hash = sha256(headers);
+        ID_BLOCK.push_back(magicValue);
+        hash = sha256(ID_BLOCK);
         if(isValidHash(hash)){
             break;
         }
         else{
-            headers.pop_back();
+            ID_BLOCK.pop_back();
             ++magicValue;
         }
         std::cout<<"INCOGNITA: "<<magicValue<<"\n";
@@ -59,4 +59,16 @@ std::string mineValidHash(const std::string data, std::string prevHash, int time
         system("cls");
     }
     return hash;
+}
+
+std::string genIDBlock(const std::string data, std::string prevHash,  int timestamp){
+    std::string ID_BLOCK;
+    std::string headers = "";
+    headers += data;
+    headers += prevHash;
+    headers += timestamp;
+
+    ID_BLOCK = sha256(headers);
+
+    return ID_BLOCK;
 }

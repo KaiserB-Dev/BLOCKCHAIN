@@ -10,12 +10,10 @@ int main(){
     
     Blockchain bc;
 
-    bc.addBlock("PRUEBA");
+    bc.addBlock("A->B 5BTC");
+    bc.addBlock("C->Z 100BTC");
 
     std::cout<<bc<<"\n";
-
-    
-
 
 
     return 0;

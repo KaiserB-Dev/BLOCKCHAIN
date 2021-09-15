@@ -15,7 +15,8 @@ class block{
     private:
         std::string data;
         std::string prevHash;
-        std::string hash;
+        std::string ValidHash;
+        std::string ID_BLOCK;
         int timestamp;
 
     public:
@@ -24,7 +25,8 @@ class block{
         std::string getHash();
 }; //Definicion de la clase bloque
 
-std::string mineValidHash(const std::string data, std::string prevHash,  int timestamp);
+std::string mineValidHash(std::string ID_BLOCK);
 bool isValidHash(std::string hash);
+std::string genIDBlock(const std::string data, std::string prevHash,  int timestamp);
 
 #endif
