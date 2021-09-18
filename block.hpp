@@ -5,6 +5,7 @@
 
 #include<string>
 #include "sha256.hpp"
+#include "ccontrol.hpp"
 #include<ostream>
 #include <vector>
 #include<iostream>

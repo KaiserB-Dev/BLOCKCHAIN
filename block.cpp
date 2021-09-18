@@ -43,7 +43,10 @@ std::string mineValidHash(std::string ID_BLOCK){
     std::string hash;
     ID_BLOCK.pop_back();
     
-
+    std::cout<<"INCOGNITA: ";
+    cpos incog;
+    std::cout<<"\nHASH: ";
+    cpos jash;
     while(true){
         ID_BLOCK.push_back(magicValue);
         hash = sha256(ID_BLOCK);
@@ -54,10 +57,12 @@ std::string mineValidHash(std::string ID_BLOCK){
             ID_BLOCK.pop_back();
             ++magicValue;
         }
-        std::cout<<"INCOGNITA: "<<magicValue<<"\n";
-        std::cout<<"HASH:"<<hash<<"\n";
-        system("cls");
+        incog.putxy();
+        std::cout<<magicValue;
+        jash.putxy();
+        std::cout<<hash;
     }
+    std::cout<<std::endl;
     return hash;
 }
 
