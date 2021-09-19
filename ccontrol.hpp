@@ -4,7 +4,7 @@
 #include <iostream>
 
 // Class by Lang Lovdog Brandon Arthemis Nereo Inu Oókami Marquez Salazar
-struct cpos {
+class cpos {
     private:
         int* cp;
     public:

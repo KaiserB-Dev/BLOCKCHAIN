@@ -60,7 +60,7 @@ std::string mineValidHash(std::string ID_BLOCK){
         incog.putxy();
         std::cout<<magicValue;
         jash.putxy();
-        std::cout<<hash;
+        std::cout<<hash<<"\n";
     }
     std::cout<<std::endl;
     return hash;
