@@ -3,7 +3,10 @@
 #include"blockchain.hpp"
 
 Blockchain::Blockchain(){
-    blockchain.push_back(this->newGenesis());
+    std::ifstream data("blockchain.txt");
+    std::string datax2;
+
+    //data. ?  blockchain.push_back(this->newGenesis()) : recover_blockchain("blockchain.txt");
 }
 
 void Blockchain::addBlock(const std::string data){
@@ -26,4 +29,24 @@ std::ostream& operator<<(std::ostream& os, Blockchain b){
     os<<"} \n";
 
     return os;
+}
+
+void Blockchain::save_blockchain(Blockchain blockchain){
+    std::ofstream l("Blockchain.txt");
+    l<<blockchain;
+}
+
+void Blockchain::recover_blockchain(const std::string file){
+    std::ifstream blockchain_file(file);
+
+    std::string temp_storage;
+
+    while(!blockchain_file.eof()){
+        blockchain_file>>temp_storage;
+    }
+
+    std::cout<<temp_storage<<std::endl;
+
+    blockchain_file.close();
+
 }
