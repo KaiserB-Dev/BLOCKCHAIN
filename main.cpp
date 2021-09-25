@@ -7,7 +7,7 @@
 
 int main(){
 
-    
+    system("cls");
     Blockchain bc;
 
     bc.addBlock("A->B 5BTC");
